@@ -12,7 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 /**
  * @author daohn on 30/07/2020
@@ -23,11 +24,9 @@ import java.util.Date;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Venda {
-    @Id
-    @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
-    @NonNull @Getter @Setter
-    private Date dataVenda;
+public class Venda implements ValueObject {
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
+    @NonNull @Getter @Setter private LocalDate dataVenda;
+    @NonNull @Getter @Setter @ManyToOne private Vendedor vendedor;
+    @NonNull @Getter @Setter @ManyToOne private Cliente cliente;
 }

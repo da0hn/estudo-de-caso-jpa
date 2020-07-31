@@ -22,9 +22,10 @@ import javax.persistence.Id;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Produto {
+public class Produto implements ValueObject {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer codigo;
     @NonNull @Getter @Setter

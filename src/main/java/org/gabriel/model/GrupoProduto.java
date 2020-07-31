@@ -22,7 +22,7 @@ import javax.persistence.Id;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class GrupoProduto {
+public class GrupoProduto implements ValueObject{
 
     @Id
     @Getter

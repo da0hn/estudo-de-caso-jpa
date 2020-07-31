@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * @author daohn on 30/07/2020
@@ -22,9 +24,11 @@ import javax.persistence.Id;
 @ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Cliente {
+public class Cliente implements ValueObject {
     @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer codigo;
-    @NonNull @Getter @Setter private String nome;
-
+    @NonNull @Getter @Setter
+    private String nome;
+    @Getter @Setter @OneToMany
+    List<Venda> vendas;
 }

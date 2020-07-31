@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * @author daohn on 30/07/2020
@@ -22,13 +24,9 @@ import javax.persistence.Id;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Vendedor {
-    @Id
-    @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
-    @NonNull @Getter @Setter
-    private String nome;
-    @NonNull @Getter @Setter
-    private Float perComissao;
+public class Vendedor implements ValueObject {
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
+    @NonNull @Getter @Setter private String nome;
+    @NonNull @Getter @Setter private Float perComissao;
+    @Getter @Setter @OneToMany private List<Venda> venda;
 }
