@@ -4,8 +4,17 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="AcademicoBD" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Vendas" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>org.gabriel.model.GrupoProduto</class>
+        <class>org.gabriel.model.Cliente</class>
+        <class>org.gabriel.model.Fornecedor</class>
+        <class>org.gabriel.model.ItemVenda</class>
+        <class>org.gabriel.model.Produto</class>
+        <class>org.gabriel.model.Venda</class>
+        <class>org.gabriel.model.Vendedor</class>
+
         <properties>
             <property name="javax.persistence.jdbc.Driver" value="org.postgresql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url"

@@ -18,13 +18,21 @@ import javax.persistence.Id;
  * @project ExercicioMapeamentoJPA
  */
 @Entity
-@EqualsAndHashCode
-@ToString
-@RequiredArgsConstructor
 @NoArgsConstructor
-public class Cliente {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
+@RequiredArgsConstructor
+@ToString
+@EqualsAndHashCode
+public class ItemVenda {
+
+    @Id
+    @Getter
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer codigo;
-    @NonNull @Getter @Setter private String nome;
+    @NonNull @Getter @Setter
+    private Integer quantidade;
+    @NonNull @Getter @Setter
+    private Integer precoVenda;
+    @NonNull @Getter @Setter
+    private Float perDesconto;
 
 }

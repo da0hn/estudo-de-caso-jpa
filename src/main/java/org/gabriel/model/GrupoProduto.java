@@ -18,13 +18,16 @@ import javax.persistence.Id;
  * @project ExercicioMapeamentoJPA
  */
 @Entity
-@EqualsAndHashCode
-@ToString
-@RequiredArgsConstructor
 @NoArgsConstructor
-public class Cliente {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
-    @NonNull @Getter @Setter private String nome;
+@RequiredArgsConstructor
+@ToString
+@EqualsAndHashCode
+public class GrupoProduto {
 
+    @Id
+    @Getter
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer codigo;
+    @NonNull @Getter @Setter
+    private String nome;
 }
