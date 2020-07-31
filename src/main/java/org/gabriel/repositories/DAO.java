@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class DAO<VO extends ValueObject> {
 
-    private EntityManager manager;
-    private Class<VO> valueObject;
+    private final EntityManager manager;
+    private final Class<VO> valueObject;
 
     public DAO(EntityManager manager) {
        this.manager = manager;
@@ -24,7 +24,7 @@ public class DAO<VO extends ValueObject> {
         this.valueObject = valueObject;
     }
 
-    public DAO<VO> open() {
+    public DAO<VO> begin() {
         manager.getTransaction().begin();
         return this;
     }
@@ -45,6 +45,11 @@ public class DAO<VO extends ValueObject> {
 
     public DAO<VO> save(VO vo) {
         manager.persist(vo);
+        return this;
+    }
+
+    public DAO<VO> update(VO vo) {
+        manager.merge(vo);
         return this;
     }
 
