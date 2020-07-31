@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,10 +32,13 @@ import java.util.List;
 public class Venda implements ValueObject {
     @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
     @NonNull @Getter @Setter private LocalDate dataVenda;
-    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "vendedor_id")
-    private Vendedor vendedor;
-    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-    @Getter @Setter @OneToMany(fetch = FetchType.LAZY) @JoinColumn(name = "item_venda_id")
-    private List<ItemVenda> itensVenda;
+
+    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "vendedor_id") private Vendedor vendedor;
+
+    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id") private Cliente cliente;
+
+    @Getter @Setter @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_venda_id") private List<ItemVenda> itensVenda;
 }
