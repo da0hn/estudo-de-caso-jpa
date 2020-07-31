@@ -11,15 +11,15 @@ import javax.persistence.Persistence;
 public class EntityManagerUtil {
     private static EntityManagerFactory factory = null;
 
-    private EntityManagerUtil(){}
+    private EntityManagerUtil() {
+    }
 
     static {
-        factory = Persistence.createEntityManagerFactory("vendas");
+        factory = Persistence.createEntityManagerFactory("Vendas");
     }
 
     public static EntityManager getEntityManager() {
-        if(factory == null)
-            throw new IllegalStateException("Unidade de persistencia não iniciada");
+        if(factory == null) throw new IllegalStateException("Unidade de persistencia não iniciada");
         return factory.createEntityManager();
     }
 }

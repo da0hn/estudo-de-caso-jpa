@@ -22,12 +22,8 @@ import javax.persistence.Id;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class GrupoProduto implements ValueObject{
+public class GrupoProduto implements ValueObject {
 
-    @Id
-    @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
-    @NonNull @Getter @Setter
-    private String nome;
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
+    @NonNull @Getter @Setter private String nome;
 }

@@ -9,9 +9,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -28,5 +30,6 @@ public class Vendedor implements ValueObject {
     @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
     @NonNull @Getter @Setter private String nome;
     @NonNull @Getter @Setter private Float perComissao;
-    @Getter @Setter @OneToMany private List<Venda> venda;
+    @Getter @Setter @OneToMany(fetch = FetchType.LAZY) @JoinColumn(name = "venda_id")
+    private List<Venda> venda;
 }
