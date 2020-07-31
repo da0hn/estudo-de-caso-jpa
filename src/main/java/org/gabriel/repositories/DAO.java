@@ -1,4 +1,4 @@
-package org.gabriel.repositories.base;
+package org.gabriel.repositories;
 
 import org.gabriel.model.ValueObject;
 
@@ -14,7 +14,12 @@ public class DAO<VO extends ValueObject> {
     private EntityManager manager;
     private Class<VO> valueObject;
 
-    public DAO(EntityManager manager, Class<VO> valueObject) {
+    public DAO(EntityManager manager) {
+       this.manager = manager;
+       this.valueObject = (Class<VO>) ValueObject.class;
+    }
+
+    DAO(EntityManager manager, Class<VO> valueObject) {
         this.manager = manager;
         this.valueObject = valueObject;
     }
@@ -38,8 +43,13 @@ public class DAO<VO extends ValueObject> {
         return manager.find(valueObject, id);
     }
 
-    public DAO<VO> insert(VO vo) {
+    public DAO<VO> save(VO vo) {
         manager.persist(vo);
+        return this;
+    }
+
+    public DAO<VO> delete(VO vo) {
+        manager.remove(vo);
         return this;
     }
 

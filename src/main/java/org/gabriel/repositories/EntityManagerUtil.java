@@ -1,4 +1,4 @@
-package org.gabriel.repositories.base;
+package org.gabriel.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
