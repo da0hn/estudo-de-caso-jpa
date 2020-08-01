@@ -41,6 +41,6 @@ public class Venda implements ValueObject {
     @JoinColumn(name = "cliente_id") private Cliente cliente;
 
     @Getter @Setter @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_venda_id") private List<ItemVenda> itensVenda = new ArrayList<>();
+    @JoinColumn(name = "venda_id") private List<ItemVenda> itensVenda = new ArrayList<>();
 
 }

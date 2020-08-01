@@ -11,6 +11,7 @@ import org.gabriel.repositories.DAO;
 import org.gabriel.repositories.EntityManagerUtil;
 
 import java.time.LocalDate;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 
@@ -35,10 +36,8 @@ public class App {
         var produto2 = new Produto("produto2", 28.12f);
         var produto3 = new Produto("produto3", 123.53f);
         var produto4 = new Produto("produto4", 2745.42f);
-        var produto5 = new Produto("produto5", 2124.56f);
-        var produto6 = new Produto("produto6", 254.70f);
-        var produto7 = new Produto("produto7", 213.86f);
-        var produto8 = new Produto("produto8", 124.7f);
+        var produto5 = new Produto("produto7", 213.86f);
+        var produto6 = new Produto("produto8", 124.7f);
 
         var fornecedor1 = new Fornecedor("fornecedor1");
         var fornecedor2 = new Fornecedor("fornecedor2");
@@ -46,16 +45,24 @@ public class App {
         var fornecedor4 = new Fornecedor("fornecedor4");
         var fornecedor5 = new Fornecedor("fornecedor5");
 
-        var itemVenda1 = new ItemVenda(1, 31, 43.98f);
-        var itemVenda2 = new ItemVenda(7, 21, 12.87f);
-        var itemVenda3 = new ItemVenda(1, 41, 15.67f);
-        var itemVenda4 = new ItemVenda(11, 11, 83.15f);
-        var itemVenda5 = new ItemVenda(21, 11, 74.12f);
-        var itemVenda6 = new ItemVenda(10, 64, 56.99f);
-        var itemVenda7 = new ItemVenda(7, 75, 89.57f);
-        var itemVenda8 = new ItemVenda(8, 90, 99.53f);
-        var itemVenda9 = new ItemVenda(14, 1, 12.68f);
-        var itemVenda10 = new ItemVenda(6, 2, 125.64f);
+
+        var itemVenda1 = new ItemVenda(1, 31.34, 43.98, produto1);
+        var itemVenda2 = new ItemVenda(7, 21.75, 12.87, produto1);
+        var itemVenda3 = new ItemVenda(1, 41.122, 15.67, produto2);
+        var itemVenda4 = new ItemVenda(11, 11.875, 83.15, produto2);
+        var itemVenda5 = new ItemVenda(21, 11.124, 74.12, produto2);
+        var itemVenda6 = new ItemVenda(10, 64.864, 56.99, produto1);
+        var itemVenda7 = new ItemVenda(7, 75.785, 89.57, produto3);
+        var itemVenda8 = new ItemVenda(8, 90.124, 99.53, produto4);
+        var itemVenda9 = new ItemVenda(14, 1.99, 12.68, produto4);
+        var itemVenda10 = new ItemVenda(6, 2.89, 125.64, produto4);
+        var itemVenda11 = new ItemVenda(57, 90.124, 99.53, produto3);
+        var itemVenda12 = new ItemVenda(34, 1.99, 12.68, produto5);
+        var itemVenda13 = new ItemVenda(12, 2.89, 125.64, produto5);
+        var itemVenda14 = new ItemVenda(74, 90.124, 99.53, produto6);
+        var itemVenda15 = new ItemVenda(1, 1.99, 12.68, produto6);
+        var itemVenda16 = new ItemVenda(6, 2.89, 125.64, produto3);
+
 
         var venda1 = new Venda(LocalDate.now()
                                        .minusDays(11)
@@ -79,43 +86,40 @@ public class App {
         var venda7 = new Venda(LocalDate.now()
                                        .minusDays(1)
                                        .minusMonths(2));
-        var venda8 = new Venda(LocalDate.now()
-                                       .plusDays(5)
-                                       .minusMonths(23));
-        var venda9 = new Venda(LocalDate.now()
-                                       .plusDays(14)
-                                       .minusMonths(49));
-        var venda10 = new Venda(LocalDate.now()
-                                        .minusDays(89)
-                                        .minusMonths(12));
 
         var vendedor1 = new Vendedor("vendedor1", 15f);
         var vendedor2 = new Vendedor("vendedor2", 15f);
         var vendedor3 = new Vendedor("vendedor3", 15f);
-        var vendedor4 = new Vendedor("vendedor4", 15f);
 
         var cliente1 = new Cliente("cliente1");
         var cliente2 = new Cliente("cliente2");
         var cliente3 = new Cliente("cliente3");
 
+        venda1.setItensVenda(asList(itemVenda1, itemVenda2));
+        venda2.setItensVenda(asList(itemVenda3, itemVenda4, itemVenda5));
+        venda3.setItensVenda(asList(itemVenda6, itemVenda1, itemVenda4));
+        venda4.setItensVenda(asList(itemVenda7, itemVenda8, itemVenda4, itemVenda9));
+        venda5.setItensVenda(asList(itemVenda10, itemVenda11, itemVenda16, itemVenda15));
+        venda6.setItensVenda(asList(itemVenda12, itemVenda13, itemVenda14, itemVenda11));
+        venda7.setItensVenda(asList(itemVenda15, itemVenda16));
+
         cliente1.addVendas(asList(venda1, venda2, venda3));
         cliente2.addVendas(asList(venda4, venda5));
-        cliente3.addVendas(asList(venda6, venda7, venda8, venda9, venda10));
+        cliente3.addVendas(asList(venda6, venda7));
 
         vendedor1.addVendas(asList(venda1, venda4, venda5));
-        vendedor2.addVendas(asList(venda2, venda3, venda6, venda8));
-        vendedor3.addVendas(asList(venda7, venda9));
-        vendedor4.addVendas(venda10);
+        vendedor2.addVendas(asList(venda2, venda3, venda6));
+        vendedor3.addVendas(Collections.singletonList(venda7));
+
 
         dao.begin()
-                .save(asList(venda1, venda2, venda3, venda4, venda5, venda6, venda7, venda8, venda9,
-                             venda10
+                .save(asList(produto1, produto2, produto3, produto4, produto5, produto6))
+                .save(asList(itemVenda1, itemVenda2, itemVenda3, itemVenda4, itemVenda5, itemVenda6,
+                             itemVenda7, itemVenda8, itemVenda9, itemVenda10, itemVenda11,
+                             itemVenda12, itemVenda13, itemVenda14, itemVenda15, itemVenda16
                 ))
-                .commit();
-        dao.begin()
-                .save(asList(vendedor1, vendedor2, vendedor3, vendedor4))
-                .commit();
-        dao.begin()
+                .save(asList(venda1, venda2, venda3, venda4, venda5, venda6, venda7))
+                .save(asList(vendedor1, vendedor2, vendedor3))
                 .save(asList(cliente1, cliente2, cliente3))
                 .commit();
         dao.fechar();

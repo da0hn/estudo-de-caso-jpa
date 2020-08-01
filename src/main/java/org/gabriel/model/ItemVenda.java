@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,8 +30,8 @@ public class ItemVenda implements ValueObject {
 
     @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
     @NonNull @Getter @Setter private Integer quantidade;
-    @NonNull @Getter @Setter private Integer precoVenda;
-    @NonNull @Getter @Setter private Float perDesconto;
-    @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "produto_id")
+    @NonNull @Getter @Setter @Column(precision = 2) private Double precoVenda;
+    @NonNull @Getter @Setter @Column(precision = 2) private Double perDesconto;
+    @NonNull @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "produto_id")
     private Produto produto;
 }
