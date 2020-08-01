@@ -29,15 +29,15 @@ public class App {
 
         var grupoProduto1 = new GrupoProduto("grupoproduto1");
         var grupoProduto2 = new GrupoProduto("grupoproduto2");
-        var grupoProduto6 = new GrupoProduto("grupoproduto6");
-        var grupoProduto7 = new GrupoProduto("grupoproduto7");
+        var grupoProduto3 = new GrupoProduto("grupoproduto6");
+        var grupoProduto4 = new GrupoProduto("grupoproduto7");
 
-        var produto1 = new Produto("produto1", 25.79f);
-        var produto2 = new Produto("produto2", 28.12f);
-        var produto3 = new Produto("produto3", 123.53f);
-        var produto4 = new Produto("produto4", 2745.42f);
-        var produto5 = new Produto("produto7", 213.86f);
-        var produto6 = new Produto("produto8", 124.7f);
+        var produto1 = new Produto("produto1", 25.79f, grupoProduto1);
+        var produto2 = new Produto("produto2", 28.12f, grupoProduto2);
+        var produto3 = new Produto("produto3", 123.53f, grupoProduto2);
+        var produto4 = new Produto("produto4", 2745.42f, grupoProduto3);
+        var produto5 = new Produto("produto7", 213.86f, grupoProduto3);
+        var produto6 = new Produto("produto8", 124.7f, grupoProduto4);
 
         var fornecedor1 = new Fornecedor("fornecedor1");
         var fornecedor2 = new Fornecedor("fornecedor2");
@@ -45,6 +45,12 @@ public class App {
         var fornecedor4 = new Fornecedor("fornecedor4");
         var fornecedor5 = new Fornecedor("fornecedor5");
 
+        produto1.addFornecedores(asList(fornecedor1, fornecedor2, fornecedor3));
+        produto2.addFornecedores(asList(fornecedor2, fornecedor3, fornecedor5));
+        produto3.addFornecedores(asList(fornecedor1, fornecedor3, fornecedor4));
+        produto4.addFornecedores(asList(fornecedor1, fornecedor2, fornecedor4, fornecedor5));
+        produto5.addFornecedores(asList(fornecedor4, fornecedor5));
+        produto6.addFornecedores(asList(fornecedor1, fornecedor3, fornecedor5));
 
         var itemVenda1 = new ItemVenda(1, 31.34, 43.98, produto1);
         var itemVenda2 = new ItemVenda(7, 21.75, 12.87, produto1);
@@ -113,6 +119,8 @@ public class App {
 
 
         dao.begin()
+                .save(asList(grupoProduto1, grupoProduto2, grupoProduto3, grupoProduto4))
+                .save(asList(fornecedor1, fornecedor2, fornecedor3, fornecedor4, fornecedor5))
                 .save(asList(produto1, produto2, produto3, produto4, produto5, produto6))
                 .save(asList(itemVenda1, itemVenda2, itemVenda3, itemVenda4, itemVenda5, itemVenda6,
                              itemVenda7, itemVenda8, itemVenda9, itemVenda10, itemVenda11,
