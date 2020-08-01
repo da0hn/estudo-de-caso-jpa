@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,5 +41,6 @@ public class Venda implements ValueObject {
     @JoinColumn(name = "cliente_id") private Cliente cliente;
 
     @Getter @Setter @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_venda_id") private List<ItemVenda> itensVenda;
+    @JoinColumn(name = "item_venda_id") private List<ItemVenda> itensVenda = new ArrayList<>();
+
 }

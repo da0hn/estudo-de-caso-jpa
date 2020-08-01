@@ -48,6 +48,11 @@ public class DAO<VO extends ValueObject> {
         return this;
     }
 
+    public DAO<VO> save(List<VO> vos) {
+        vos.forEach(this::save);
+        return this;
+    }
+
     public DAO<VO> update(VO vo) {
         manager.merge(vo);
         return this;

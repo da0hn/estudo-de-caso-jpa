@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class Vendedor implements ValueObject {
 
     @Getter @Setter
     @OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Venda> vendas;
+    private List<Venda> vendas = new ArrayList<>();
 
     public void addVendas(Venda venda) {
         venda.setVendedor(this);
@@ -45,5 +46,9 @@ public class Vendedor implements ValueObject {
     public void removeVendas(Venda venda) {
         vendas.remove(venda);
         venda.setVendedor(null);
+    }
+
+    public void addVendas(List<Venda> vendas) {
+        vendas.forEach(this::addVendas);
     }
 }

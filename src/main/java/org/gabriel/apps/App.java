@@ -59,7 +59,8 @@ public class App {
 
         var venda1 = new Venda(LocalDate.now()
                                        .minusDays(11)
-                                       .minusMonths(35));
+                                       .minusMonths(35)
+                                       .plusDays(12));
         var venda2 = new Venda(LocalDate.now()
                                        .minusDays(9)
                                        .minusMonths(13));
@@ -78,6 +79,15 @@ public class App {
         var venda7 = new Venda(LocalDate.now()
                                        .minusDays(1)
                                        .minusMonths(2));
+        var venda8 = new Venda(LocalDate.now()
+                                       .plusDays(5)
+                                       .minusMonths(23));
+        var venda9 = new Venda(LocalDate.now()
+                                       .plusDays(14)
+                                       .minusMonths(49));
+        var venda10 = new Venda(LocalDate.now()
+                                        .minusDays(89)
+                                        .minusMonths(12));
 
         var vendedor1 = new Vendedor("vendedor1", 15f);
         var vendedor2 = new Vendedor("vendedor2", 15f);
@@ -88,31 +98,26 @@ public class App {
         var cliente2 = new Cliente("cliente2");
         var cliente3 = new Cliente("cliente3");
 
-        dao.begin()
-                .save(venda1)
-                .save(venda2)
-                .save(venda3)
-                .save(venda4)
-                .save(venda5)
-                .save(venda6)
-                .commit();
+        cliente1.addVendas(asList(venda1, venda2, venda3));
+        cliente2.addVendas(asList(venda4, venda5));
+        cliente3.addVendas(asList(venda6, venda7, venda8, venda9, venda10));
 
-        cliente1.setVendas(asList(venda1, venda2));
-        cliente2.setVendas(asList(venda3, venda6));
-        cliente3.setVendas(asList(venda4, venda5, venda7));
-
-        venda1.setCliente(cliente1);
-        venda2.setCliente(cliente1);
-        venda3.setCliente(cliente2);
-        venda4.setCliente(cliente3);
-        venda5.setCliente(cliente3);
-        venda6.setCliente(cliente2);
-        venda7.setCliente(cliente3);
+        vendedor1.addVendas(asList(venda1, venda4, venda5));
+        vendedor2.addVendas(asList(venda2, venda3, venda6, venda8));
+        vendedor3.addVendas(asList(venda7, venda9));
+        vendedor4.addVendas(venda10);
 
         dao.begin()
-                .save(cliente1)
-                .save(cliente2)
-                .save(cliente3)
+                .save(asList(venda1, venda2, venda3, venda4, venda5, venda6, venda7, venda8, venda9,
+                             venda10
+                ))
                 .commit();
+        dao.begin()
+                .save(asList(vendedor1, vendedor2, vendedor3, vendedor4))
+                .commit();
+        dao.begin()
+                .save(asList(cliente1, cliente2, cliente3))
+                .commit();
+        dao.fechar();
     }
 }
