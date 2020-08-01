@@ -14,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +28,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Cliente implements ValueObject {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer codigo;
 
-    @NonNull @Getter @Setter private String nome;
+    @NonNull @Getter @Setter
+    private String nome;
 
     @Getter @Setter
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -47,5 +48,7 @@ public class Cliente implements ValueObject {
         venda.setCliente(null);
     }
 
-    public void addVendas(List<Venda> vendas) { vendas.forEach(this::addVendas); }
+    public void addVendas(List<Venda> vendas) {
+        vendas.forEach(this::addVendas);
+    }
 }

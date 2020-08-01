@@ -11,9 +11,9 @@ import org.gabriel.repositories.DAO;
 import org.gabriel.repositories.EntityManagerUtil;
 
 import java.time.LocalDate;
-import java.util.Collections;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 /**
  * @author daohn on 30/07/2020
@@ -115,7 +115,7 @@ public class App {
 
         vendedor1.addVendas(asList(venda1, venda4, venda5));
         vendedor2.addVendas(asList(venda2, venda3, venda6));
-        vendedor3.addVendas(Collections.singletonList(venda7));
+        vendedor3.addVendas(singletonList(venda7));
 
 
         dao.begin()
@@ -129,7 +129,7 @@ public class App {
                 .save(asList(venda1, venda2, venda3, venda4, venda5, venda6, venda7))
                 .save(asList(vendedor1, vendedor2, vendedor3))
                 .save(asList(cliente1, cliente2, cliente3))
-                .commit();
-        dao.fechar();
+                .commit()
+                .fechar();
     }
 }

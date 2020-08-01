@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
  * @project ExercicioMapeamentoJPA
  */
 public class EntityManagerUtil {
-    private static EntityManagerFactory factory = null;
+    private static EntityManagerFactory factory;
 
     private EntityManagerUtil() {
     }

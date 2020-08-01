@@ -29,8 +29,10 @@ import java.util.List;
 @EqualsAndHashCode
 public class Fornecedor implements ValueObject {
 
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
-    @Getter @Setter @NonNull private String razaoSocial;
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer codigo;
+    @Getter @Setter @NonNull
+    private String razaoSocial;
     @Getter @ManyToMany(mappedBy = "fornecedores", fetch = FetchType.LAZY, cascade =
             CascadeType.ALL)
     private List<Produto> produtos = new ArrayList<>();

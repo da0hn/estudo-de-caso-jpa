@@ -31,16 +31,20 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class Venda implements ValueObject {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
-    @NonNull @Getter @Setter private LocalDate dataVenda;
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer codigo;
+    @NonNull @Getter @Setter
+    private LocalDate dataVenda;
 
     @Getter @Setter @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "vendedor_id") private Vendedor vendedor;
+    @JoinColumn(name = "vendedor_id")
+    private Vendedor vendedor;
 
     @Getter @Setter @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id") private Cliente cliente;
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     @Getter @Setter @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "venda_id") private List<ItemVenda> itensVenda = new ArrayList<>();
-
+    @JoinColumn(name = "venda_id")
+    private List<ItemVenda> itensVenda = new ArrayList<>();
 }

@@ -28,11 +28,14 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class Vendedor implements ValueObject {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE) private Integer codigo;
+    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer codigo;
 
-    @NonNull @Getter @Setter private String nome;
+    @NonNull @Getter @Setter
+    private String nome;
 
-    @NonNull @Getter @Setter private Float perComissao;
+    @NonNull @Getter @Setter
+    private Float perComissao;
 
     @Getter @Setter
     @OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
