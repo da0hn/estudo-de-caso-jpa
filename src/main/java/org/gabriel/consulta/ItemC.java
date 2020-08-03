@@ -11,6 +11,10 @@ import static org.gabriel.util.StringUtil.center;
  * @project ExercicioMapeamentoJPA
  */
 public class ItemC {
+    /**
+     * Listar todos os clientes cadastrados, ordenados por nome (código, nome, quantidade
+     * de vendas que já foram realizadas para ele).
+     */
     public static void main(String[] args) {
         var manager = EntityManagerUtil.getEntityManager();
         var query = manager.createQuery("select c from Cliente c order by c.nome", Cliente.class);

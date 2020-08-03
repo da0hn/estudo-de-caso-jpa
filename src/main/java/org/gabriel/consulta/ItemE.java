@@ -12,6 +12,11 @@ import static org.gabriel.util.StringUtil.center;
  * @project ExercicioMapeamentoJPA
  */
 public class ItemE {
+    /**
+     * Listar todos os vendedores cadastrados, ordenados por nome (código, nome, valor de comissão
+     * de cada venda que ele realizou (código da venda, valor total da venda, valor comissão na
+     * venda)).
+     */
     public static void main(String[] args) {
         var manager = EntityManagerUtil.getEntityManager();
         var query = manager.createQuery("select v from Vendedor v order by v.nome", Vendedor.class);

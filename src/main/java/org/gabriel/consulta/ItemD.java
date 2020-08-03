@@ -12,6 +12,10 @@ import static org.gabriel.util.StringUtil.center;
  * @project ExercicioMapeamentoJPA
  */
 public class ItemD {
+    /**
+     * Listar todas as vendas cadastradas, ordenadas por data da venda (código, data da venda,
+     * valor total da venda) e seus itens (código, quantidade, preço venda, percentual de desconto)
+     */
     public static void main(String[] args) {
         var manager = EntityManagerUtil.getEntityManager();
         var query = manager.createQuery("select v from Venda v order by v.dataVenda", Venda.class);
