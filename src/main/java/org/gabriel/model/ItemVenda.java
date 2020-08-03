@@ -38,4 +38,8 @@ public class ItemVenda implements ValueObject {
     private Double perDesconto;
     @NonNull @Getter @Setter @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "produto_id")
     private Produto produto;
+
+    public Double getTotalVenda() {
+        return precoVenda * quantidade;
+    }
 }

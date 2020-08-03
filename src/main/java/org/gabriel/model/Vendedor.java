@@ -54,4 +54,8 @@ public class Vendedor implements ValueObject {
     public void addVendas(List<Venda> vendas) {
         vendas.forEach(this::addVendas);
     }
+
+    public double getValorTotalComissao() {
+        return getVendas().stream().mapToDouble(Venda::getValorComissao).sum();
+    }
 }

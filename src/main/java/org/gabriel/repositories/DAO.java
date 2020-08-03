@@ -12,11 +12,11 @@ import java.util.List;
 public class DAO<VO extends ValueObject> {
 
     private final EntityManager manager;
-    private final Class<VO> valueObject;
+    public final Class<VO> valueObject;
 
     public DAO(EntityManager manager) {
-       this.manager = manager;
-       this.valueObject = (Class<VO>) ValueObject.class;
+        this.manager = manager;
+        this.valueObject = (Class<VO>) ValueObject.class;
     }
 
     DAO(EntityManager manager, Class<VO> valueObject) {
@@ -64,7 +64,9 @@ public class DAO<VO extends ValueObject> {
     }
 
     public List<VO> findAll(int limit, int offset) {
-        if(valueObject == null) throw new UnsupportedOperationException("Classe nula.");
+        if(valueObject == null || valueObject.equals(ValueObject.class)) {
+            throw new UnsupportedOperationException("Não é possível executar findAll()");
+        }
         String query = "select vo from " + this.valueObject.getName() + " vo";
         return manager.createQuery(query, valueObject)
                 .setMaxResults(limit)

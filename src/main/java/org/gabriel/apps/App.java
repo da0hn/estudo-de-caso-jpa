@@ -93,8 +93,8 @@ public class App {
                                        .minusDays(1)
                                        .minusMonths(2));
 
-        var vendedor1 = new Vendedor("vendedor1", 15f);
-        var vendedor2 = new Vendedor("vendedor2", 15f);
+        var vendedor1 = new Vendedor("vendedor1", 8f);
+        var vendedor2 = new Vendedor("vendedor2", 12f);
         var vendedor3 = new Vendedor("vendedor3", 15f);
 
         var cliente1 = new Cliente("cliente1");
@@ -125,7 +125,8 @@ public class App {
                 .save(asList(itemVenda1, itemVenda2, itemVenda3, itemVenda4, itemVenda5, itemVenda6,
                              itemVenda7, itemVenda8, itemVenda9, itemVenda10, itemVenda11,
                              itemVenda12, itemVenda13, itemVenda14, itemVenda15, itemVenda16
-                ))
+                      )
+                )
                 .save(asList(venda1, venda2, venda3, venda4, venda5, venda6, venda7))
                 .save(asList(vendedor1, vendedor2, vendedor3))
                 .save(asList(cliente1, cliente2, cliente3))

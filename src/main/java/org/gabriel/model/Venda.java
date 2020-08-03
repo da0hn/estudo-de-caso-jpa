@@ -47,4 +47,12 @@ public class Venda implements ValueObject {
     @Getter @Setter @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "venda_id")
     private List<ItemVenda> itensVenda = new ArrayList<>();
+
+    public double getValorTotal() {
+        return getItensVenda().stream().mapToDouble(ItemVenda::getTotalVenda).sum();
+    }
+
+    public double getValorComissao() {
+        return getValorTotal() * vendedor.getPerComissao() / 100;
+    }
 }

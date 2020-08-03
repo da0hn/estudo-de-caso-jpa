@@ -25,13 +25,13 @@ public class Produto implements ValueObject {
     private String nome;
     @NonNull @Getter @Setter
     private Float precoVenda;
-    @Getter @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Getter @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "produto_fornecedor",
                joinColumns = {@JoinColumn(name = "produto_id")},
                inverseJoinColumns = {@JoinColumn(name = "fornecedor_id")}
     )
     private List<Fornecedor> fornecedores = new ArrayList<>();
-    @NonNull @Getter @Setter @ManyToOne(fetch = FetchType.LAZY)
+    @NonNull @Getter @Setter @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grupo_produto_id") private GrupoProduto grupoProduto;
 
     public void addFornecedor(Fornecedor fornecedor) {
