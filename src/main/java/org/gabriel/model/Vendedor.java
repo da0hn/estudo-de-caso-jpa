@@ -1,19 +1,15 @@
 package org.gabriel.model;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,22 +20,23 @@ import java.util.List;
  */
 @Entity
 @NoArgsConstructor
-@RequiredArgsConstructor
 @ToString
-@EqualsAndHashCode
-public class Vendedor implements ValueObject {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
+@EqualsAndHashCode(callSuper = true)
+@Getter
+public class Vendedor extends PessoaFisica implements ValueObject {
 
-    @NonNull @Getter @Setter
-    private String nome;
+    @Builder
+    public Vendedor(Float perComissao, String nome, String RG, String CPF) {
+        super(nome, RG, CPF);
+        this.perComissao = perComissao;
+        this.vendas = new ArrayList<>();
+    }
 
-    @NonNull @Getter @Setter
+    @Setter
     private Float perComissao;
 
-    @Getter @Setter
     @OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Venda> vendas = new ArrayList<>();
+    private List<Venda> vendas;
 
     public void addVendas(Venda venda) {
         venda.setVendedor(this);

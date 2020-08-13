@@ -4,8 +4,6 @@ import org.gabriel.model.Fornecedor;
 import org.gabriel.model.Produto;
 import org.gabriel.repositories.EntityManagerUtil;
 
-import java.sql.SQLOutput;
-
 /**
  * @author daohn on 02/08/2020
  * @project ExercicioMapeamentoJPA

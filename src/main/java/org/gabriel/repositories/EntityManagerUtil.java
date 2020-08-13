@@ -15,7 +15,7 @@ public class EntityManagerUtil {
     }
 
     static {
-        factory = Persistence.createEntityManagerFactory("Vendas");
+        factory = Persistence.createEntityManagerFactory("Vendas2");
     }
 
     public static EntityManager getEntityManager() {

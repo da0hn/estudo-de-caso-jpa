@@ -1,19 +1,16 @@
 package org.gabriel.model;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +20,24 @@ import java.util.List;
  * @project ExercicioMapeamentoJPA
  */
 @Entity
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @ToString
-@RequiredArgsConstructor
 @NoArgsConstructor
-public class Cliente implements ValueObject {
-    @Id @Getter @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer codigo;
+@Getter
+public class Cliente extends PessoaFisica implements ValueObject {
 
-    @NonNull @Getter @Setter
-    private String nome;
+    @Builder
+    public Cliente(Float limiteCredito, String nome, String RG, String CPF) {
+        super(nome, RG, CPF);
+        this.limiteCredito = limiteCredito;
+        this.vendas = new ArrayList<>();
+    }
 
-    @Getter @Setter
+    @Setter @Column(precision = 2)
+    private Float limiteCredito;
+
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Venda> vendas = new ArrayList<>();
+    private List<Venda> vendas;
 
     public void addVendas(Venda venda) {
         venda.setCliente(this);

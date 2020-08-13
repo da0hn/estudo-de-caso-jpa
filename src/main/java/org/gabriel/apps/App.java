@@ -39,11 +39,26 @@ public class App {
         var produto5 = new Produto("produto7", 213.86f, grupoProduto3);
         var produto6 = new Produto("produto8", 124.7f, grupoProduto4);
 
-        var fornecedor1 = new Fornecedor("fornecedor1");
-        var fornecedor2 = new Fornecedor("fornecedor2");
-        var fornecedor3 = new Fornecedor("fornecedor3");
-        var fornecedor4 = new Fornecedor("fornecedor4");
-        var fornecedor5 = new Fornecedor("fornecedor5");
+        var fornecedor1 = Fornecedor.builder()
+                .razaoSocial("fornecedor1")
+                .nomeFantasia("empresa1")
+                .build();
+        var fornecedor2 = Fornecedor.builder()
+                .razaoSocial("fornecedor2")
+                .nomeFantasia("empresa2")
+                .build();
+        var fornecedor3 = Fornecedor.builder()
+                .razaoSocial("fornecedor3")
+                .nomeFantasia("empresa3")
+                .build();
+        var fornecedor4 = Fornecedor.builder()
+                .razaoSocial("fornecedor4")
+                .nomeFantasia("empresa4")
+                .build();
+        var fornecedor5 = Fornecedor.builder()
+                .razaoSocial("fornecedor5")
+                .nomeFantasia("empresa5")
+                .build();
 
         produto1.addFornecedores(asList(fornecedor1, fornecedor2, fornecedor3));
         produto2.addFornecedores(asList(fornecedor2, fornecedor3, fornecedor5));
@@ -93,13 +108,43 @@ public class App {
                                        .minusDays(1)
                                        .minusMonths(2));
 
-        var vendedor1 = new Vendedor("vendedor1", 8f);
-        var vendedor2 = new Vendedor("vendedor2", 12f);
-        var vendedor3 = new Vendedor("vendedor3", 15f);
+        var vendedor1 = Vendedor.builder()
+                .nome("vendedor1")
+                .perComissao(18f)
+                .CPF("000.000.001-01")
+                .RG("00.000.001-1")
+                .build();
+        var vendedor2 = Vendedor.builder()
+                .nome("vendedor2")
+                .perComissao(12f)
+                .CPF("000.000.002-02")
+                .RG("00.000.002-2")
+                .build();
+        var vendedor3 = Vendedor.builder()
+                .nome("vendedor3")
+                .perComissao(15f)
+                .CPF("000.000.003-33")
+                .RG("00.000.003-3")
+                .build();
 
-        var cliente1 = new Cliente("cliente1");
-        var cliente2 = new Cliente("cliente2");
-        var cliente3 = new Cliente("cliente3");
+        var cliente1 = Cliente.builder()
+                .nome("cliente1")
+                .limiteCredito(250f)
+                .CPF("100.000.004-44")
+                .RG("10.000.004-4")
+                .build();
+        var cliente2 = Cliente.builder()
+                .nome("cliente2")
+                .limiteCredito(750f)
+                .CPF("100.000.005-55")
+                .RG("10.000.005-5")
+                .build();
+        var cliente3 = Cliente.builder()
+                .nome("cliente3")
+                .limiteCredito(1250f)
+                .CPF("100.000.006-66")
+                .RG("10.000.006-6")
+                .build();
 
         venda1.setItensVenda(asList(itemVenda1, itemVenda2));
         venda2.setItensVenda(asList(itemVenda3, itemVenda4, itemVenda5));
