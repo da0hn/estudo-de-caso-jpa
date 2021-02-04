@@ -11,7 +11,7 @@ Exercício da disciplina de Linguagem de Programação 2
 
 
 ## Implementações necessárias
-![Exercícios](images/exercicio-mapeamento-jpa.png)
+![Exercícios](images/diagrama-entidades-heranca.png)
 
 ## Diagrama de entidades
-![Diagrama de entidades](images/diagrama-entidades.jpg)
+![Diagrama de entidades](images/exercicio-mapeamento-jpa-heranca.png)
