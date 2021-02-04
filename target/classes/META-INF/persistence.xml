@@ -4,7 +4,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="Vendas2" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Vendas" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>org.gabriel.model.GrupoProduto</class>
@@ -14,14 +14,11 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
         <class>org.gabriel.model.Produto</class>
         <class>org.gabriel.model.Venda</class>
         <class>org.gabriel.model.Vendedor</class>
-        <class>org.gabriel.model.PessoaJuridica</class>
-        <class>org.gabriel.model.Pessoa</class>
-        <class>org.gabriel.model.PessoaFisica</class>
 
         <properties>
             <property name="javax.persistence.jdbc.Driver" value="org.postgresql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:postgresql://localhost:5432/vendas_heranca_jpa"/>
+                      value="jdbc:postgresql://localhost:5432/vendas_jpa"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
             <property name="hibernate.show_sql" value="false"/>

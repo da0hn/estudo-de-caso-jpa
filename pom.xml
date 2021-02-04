@@ -5,20 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <groupId>org.gabriel</groupId>
-    <artifactId>ExercicioMapeamentoJPA</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>exercicio-mapeamento-jpa</artifactId>
+    <version>1.0</version>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>
