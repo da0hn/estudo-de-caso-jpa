@@ -1,6 +1,13 @@
 # Exercício mapeamento JPA
 Exercício da disciplina de Linguagem de Programação 2 
 
+## TO-DO
+- [ ] dockerizar projeto
+- [ ] dockerizar postgresql
+- [ ] adicionar script para criação do banco
+- [ ] adicionar _docker compose_ para iniciar o banco
+- [ ] reproduzir para a branch com herança 
+
 ## Tecnologias utilizadas
 | Nome           | Versão       |
 |----------------|--------------|
